@@ -706,8 +706,10 @@ void meshWarp_multicore(const cv::Mat src, cv::Mat dst, const Mesh &m1, const Me
 #pragma omp parallel for
 	for(int iThread = 0; iThread < nThreadNum; iThread ++)
 	{
-		int begin = __max(0, iThread * gap);
-		int end = __min(quad1s.size(), iThread * gap + gap);
+		int begin = iThread * gap;
+    if(begin<0) begin=0;
+		int end = iThread * gap + gap;
+    if(end > quad1s.size()) end= quad1s.size();
 
 		for(int i=begin;i<end;i++){
 			quadWarp(src, dst, quad1s[i], quad2s[i]);

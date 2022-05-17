@@ -2,8 +2,9 @@
 
 #include <vector>
 #include <stdio.h>
-#include <opencv2\opencv.hpp>
-#include <opencv2\imgproc\imgproc.hpp>
+#include <opencv2/opencv.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
 #include <time.h>
 using namespace std;
 
@@ -99,3 +100,5 @@ void quadWarp( const cv::Mat src, cv::Mat dst, const Quad &q1, const Quad &q2);
 void meshWarp_multicore(const cv::Mat src, cv::Mat dst, const Mesh &m1, const Mesh &m2);
 void meshWarpRemap(cv::Mat &src, cv::Mat &dst, cv::Mat &mapX, cv::Mat &mapY, Mesh &m1, Mesh &m2);
 void myQuickSort(vector<float> &arr, int left, int right);
+
+const int CV_AA=16;
